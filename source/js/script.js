@@ -27,17 +27,14 @@ let deleteElm = $.querySelectorAll(".delete");
 inputElm.addEventListener("keydown", (e) => {
   // check fild ***---
   if (e.key === "Enter") {
-    if (
-      inputElm.value === "" ||
-      inputElm.value === ulELm.lastElementChild.firstElementChild.innerHTML
-    ) {
+    if (inputElm.value === "") {
       // Error style---
       $.querySelector(".error").innerHTML = "Error Check Fild";
-      $.querySelector(".error").style.color = "red";
+      $.querySelector(".error").style.color = "#f47e7e";
     } else {
       // Add style---
       $.querySelector(".error").innerHTML = "Added";
-      $.querySelector(".error").style.color = "green";
+      $.querySelector(".error").style.color = "#97ee97";
       // add ELement---
       localStorage.setItem("s", addNewElm());
       localStorage.getItem("s");
