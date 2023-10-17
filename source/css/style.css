@@ -1,39 +1,252 @@
 body {
-    background: #353f5b;
-  }
-  .container {
-    max-width: 400px;
-    margin-top: 90px;
-  }
-  .search i {
-    position: absolute;
-  }
-  .search {
-    position: relative;
-  }
-  .icon {
-    padding: 10px;
-    left: 0;
-  }
-  .input-field {
-    text-align: center;
-  }
-  
-  input[type="text"],
-  input[type="text"]:focus {
-    color: #fff;
-    border: none;
-    background: rgba(0, 0, 0, 0.3);
-    max-width: 400px;
-  }
-  .todos li {
-    background: #423a6f;
-  }
-  .delete {
-    cursor: pointer;
-  }
-  
-  
-  .filtered{
-    display: none !important;
-  }
+  background: #353f5b;
+}
+
+.container {
+  max-width: 400px;
+  margin-top: 90px;
+}
+
+.search i {
+  position: absolute;
+}
+
+.search {
+  position: relative;
+}
+
+.icon {
+  padding: 10px;
+  left: 0;
+}
+
+.input-field {
+  text-align: center;
+}
+
+input[type="text"],
+input[type="text"]:focus {
+  color: #fff;
+  border: none;
+  background: rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+}
+
+.todos li {
+  background: #423a6f;
+}
+
+.delete {
+  cursor: pointer;
+}
+
+
+.filtered {
+  display: none !important;
+}
+
+#aui-flag-container {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 4000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s ease-in-out;
+}
+
+.aui-flag-stack {
+  position: relative;
+}
+
+#aui-flag-container>.aui-flag-stack>div.aui-flag-stack-top-item[aria-hidden="false"] {
+  display: block;
+  transition: transform .5s .5s, top .5s, opacity .8s;
+}
+
+.aui-flag[aria-hidden="false"] {
+  opacity: 1;
+  top: 0;
+  left: 0;
+}
+
+.aui-flag {
+  left: 0;
+  max-height: 300px;
+  opacity: 0;
+  position: relative;
+  top: -10px;
+  transition: opacity .2s, top .5s;
+}
+
+.aui-flag .aui-message {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  border-top-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-radius: 3px;
+  width: 500px;
+}
+
+aui-message:first-child,
+.aui-message:first-child {
+  margin-top: 0;
+}
+
+.aui-message {
+  background: #fff;
+  border: 1px solid #3572b0;
+  border-radius: 3px;
+  color: #333;
+  line-height: 20px;
+  margin: 20px 0 0 0;
+  overflow-wrap: break-word;
+  padding-bottom: 20px;
+  padding-left: 60px;
+  padding-right: 40px;
+  padding-top: 20px;
+  position: relative;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.aui-message.warning,
+.aui-message-warning {
+  background: #fff;
+  border-color: #EDC211;
+  color: #333;
+}
+
+.aui-message.error,
+.aui-message-error {
+  background: #fff;
+  border-color: #d04437;
+  color: #333;
+}
+
+.aui-message.success,
+.aui-message-success {
+  background: #fff;
+  border-color: #669900;
+  color: #333;
+}
+
+.aui-message.success:before,
+.aui-message-success:before {
+  background-color: #669900;
+}
+
+.aui-message.error:before,
+.aui-message-error:before {
+  background-color: #d04437;
+}
+
+.aui-message.warning:before,
+.aui-message-warning:before {
+  background-color: #EDC211;
+}
+
+.aui-message:before {
+  background-color: #3572b0;
+}
+
+.aui-message:before {
+  background-color: #3572b0;
+  bottom: 0;
+  content: '';
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 40px;
+}
+
+.aui-message p.title {
+  font-weight: bold;
+}
+
+.aui-message p.title strong {
+  font-weight: inherit;
+}
+
+
+.aui-message.closeable:hover .icon-close,
+.aui-message.closeable .icon-close:focus,
+.aui-message.closeable:not(.fadeout):not(.aui-will-close) .icon-close {
+  opacity: 1;
+}
+
+.aui-message.closeable .icon-close {
+  top: 10px;
+}
+
+.aui-message.closeable .icon-close {
+  cursor: pointer;
+  left: auto;
+  opacity: 0;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.aui-message .aui-icon.icon-close {
+  background-image: none;
+  color: #707070;
+  text-indent: inherit;
+}
+
+.aui-message .aui-icon {
+  background-position: center;
+}
+
+.aui-icon {
+  background-repeat: no-repeat;
+  border: none;
+  display: inline-block;
+  height: 16px;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  /*text-indent: -999em;*/
+  vertical-align: text-bottom;
+  width: 16px;
+}
+
+.aui-message.success:after,
+.aui-message-success:after {
+  content: "\f05d";
+  color: #fff;
+}
+
+.aui-message.warning:after,
+.aui-message-warning:after {
+  content: "\f071";
+  color: #fff;
+}
+
+.aui-message.error:after,
+.aui-message-error:after {
+  content: "\f06a";
+  color: #fff;
+}
+
+.aui-message:after {
+  content: "\f05a";
+  color: #fff;
+}
+
+.aui-message:after {
+  color: #fff;
+  font-family: 'FontAwesome';
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-weight: normal;
+  left: 12px;
+  line-height: 1;
+  margin-top: -8px;
+  position: absolute;
+  speak: none;
+  top: 50%;
+}

@@ -39,13 +39,23 @@ inputElm.addEventListener("keydown", (e) => {
       $.querySelector(".error").innerHTML = "Added";
       $.querySelector(".error").style.color = "green";
       // add ELement---
-      localStorage.setItem("s",addNewElm())
-      localStorage.getItem("s")
+      localStorage.setItem("s", addNewElm());
+      localStorage.getItem("s");
       // add to delete elm ---
       deleteElm = $.querySelectorAll(".delete");
       deleteElm.forEach((e) => {
         e.addEventListener("click", (e) => {
           e.target.parentElement.remove();
+          $.querySelector("#aui-flag-container").style.visibility = "visible";
+          $.querySelector("#aui-flag-container").style.opacity = "1";
+          $.getElementById("close").addEventListener("click",()=>{
+            $.querySelector("#aui-flag-container").style.visibility = "hidden";
+            $.querySelector("#aui-flag-container").style.opacity = "0";
+          })
+          setTimeout(()=>{
+            $.querySelector("#aui-flag-container").style.visibility = "hidden";
+            $.querySelector("#aui-flag-container").style.opacity = "0";
+          },4000)
         });
       });
       // clear input and WORNING ---
